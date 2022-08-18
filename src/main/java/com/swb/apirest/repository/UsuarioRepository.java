@@ -5,5 +5,5 @@ import com.swb.apirest.models.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	
-	Usuario findByUsername(String nome);
+	Usuario findByEmail(String email);
 }
