@@ -15,10 +15,10 @@ public class MyUserDetailsService implements UserDetailsService{
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	public UserDetails loadUserByUsername(String nome) {
-		Usuario user = usuarioRepository.findByUsername(nome);
+	public UserDetails loadUserByUsername(String email) {
+		Usuario user = usuarioRepository.findByEmail(email);
 		if(user==null) {
-			throw new UsernameNotFoundException(nome);
+			throw new UsernameNotFoundException(email);
 		}
 		return new MyUserPrincipal(user);
 	}
