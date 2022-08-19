@@ -9,16 +9,19 @@ import org.springframework.stereotype.Service;
 import com.swb.apirest.models.Usuario;
 import com.swb.apirest.repository.UsuarioRepository;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class MyUserDetailsService implements UserDetailsService{
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	public UserDetails loadUserByUsername(String email) {
-		Usuario user = usuarioRepository.findByEmail(email);
+	public UserDetails loadUserByUsername(String username) {
+		Usuario user = usuarioRepository.findByEmail(username);
 		if(user==null) {
-			throw new UsernameNotFoundException(email);
+			throw new UsernameNotFoundException(username);
 		}
 		return new MyUserPrincipal(user);
 	}

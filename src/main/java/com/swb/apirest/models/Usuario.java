@@ -16,15 +16,22 @@ public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
 	@Column (nullable = false, unique = true)
 	private String nome;
 	private String email;
 	private String senha;
-	
-	
+
+	public Usuario(){
+	}
+	public Usuario(String nome, String email, String senha) {
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+	}
+
 	public long getId() {
 		return id;
 	}
