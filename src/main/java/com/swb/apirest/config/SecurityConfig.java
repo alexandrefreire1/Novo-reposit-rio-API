@@ -10,6 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.http.HttpMethod;
 
 import java.util.Arrays;
 
@@ -23,7 +24,7 @@ public class SecurityConfig {
                 .and().csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS, "/api/usuario").permiteAll()
+                .antMatchers(HttpMethod.POST, "/api/usuario").permiteAll()
                 .and().formLogin().permitAll()
                 .and().authorizeRequests().anyRequest()
                 .authenticated();
