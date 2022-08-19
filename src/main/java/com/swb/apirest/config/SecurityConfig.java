@@ -36,6 +36,7 @@ public class SecurityConfig {
                 .and().csrf()
                 .disable()
                 .authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/api/usuario").permitAll()
                 .and().formLogin().permitAll()
                 .and().authorizeRequests().anyRequest()
                 .authenticated();
